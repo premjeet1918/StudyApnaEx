@@ -35,19 +35,23 @@ if __name__ == "__main__":
     if not all([API_ID, API_HASH, BOT_TOKEN]):
         sys.exit("⚠️  Missing API_ID, API_HASH, or BOT_TOKEN in the environment")
 
-    # 3) Check if running on Heroku
-    if os.environ.get('DYNO'):
-        # On Heroku, just run the bot
+    # Always start BOTH the web server (to satisfy Render port binding)
+    # and the Telegram Bot in parallel.
+    import multiprocessing
+    
+    # Give the web server a slight head start to bind the port on Render
+    import time
+    def delayed_bot():
+        time.sleep(2)
         run_bot()
-    else:
-        # Locally, run both processes
-        import multiprocessing
-        procs = [
-            multiprocessing.Process(target=run_app, name="web_app"),
-            # Bot process will now be started by the user from the dashboard
-        ]
-        for p in procs:
-            p.start()
 
-        for p in procs:
-            p.join()
+    procs = [
+        multiprocessing.Process(target=run_app, name="web_app"),
+        multiprocessing.Process(target=delayed_bot, name="telegram_bot"),
+    ]
+    
+    for p in procs:
+        p.start()
+
+    for p in procs:
+        p.join()
