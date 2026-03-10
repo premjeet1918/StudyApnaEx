@@ -1,0 +1,8 @@
+C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\utils\request.py:49: UserWarning: python-telegram-bot is using upstream urllib3. This is allowed but not supported by python-telegram-bot maintainers.
+  warnings.warn(
+C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\__init__.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import get_distribution, DistributionNotFound
+Traceback (most recent call last):
+  File "C:\Users\Asus\OneDrive\Desktop\p\StudyApnaEx\test_import.py", line 3, in <module>
+    from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+ImportError: cannot import name 'ApplicationBuilder' from 'telegram.ext' (C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\__init__.py)

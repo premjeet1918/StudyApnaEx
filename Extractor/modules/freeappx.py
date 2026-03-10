@@ -22,6 +22,13 @@ from datetime import datetime
 import pytz
 # from Extractor.modules.enc import process_file_content  # Add encryption import
 
+# Dashboard status tracker
+try:
+    from bot_status import add_task, update_task
+    _HAS_STATUS = True
+except ImportError:
+    _HAS_STATUS = False
+
 
 join = config.join
 india_timezone = pytz.timezone('Asia/Kolkata')
@@ -610,6 +617,10 @@ async def process_appxwp(bot: Client, m: Message, user_id: int):
                 )
                 
                 start_time = time.time()
+
+                # Register on web dashboard
+                if _HAS_STATUS:
+                    add_task(batch_id=selected_batch_id, name=selected_batch_name, total=1, user_id=user_id, app_name=str(selected_app_name))
                 
                 headers = {
                     "Client-Service": "Appx",
@@ -653,6 +664,9 @@ async def process_appxwp(bot: Client, m: Message, user_id: int):
                     response_time = end_time - start_time
                     minutes = int(response_time // 60)
                     seconds = int(response_time % 60)
+
+                    if _HAS_STATUS:
+                        update_task(selected_batch_id, done=1, status="Completed", elapsed=round(response_time, 1))
 
                     if minutes == 0:
                         if seconds < 1:
@@ -725,6 +739,9 @@ async def process_appxwp(bot: Client, m: Message, user_id: int):
                     
         except Exception as e:
             error_msg = str(e)
+            if _HAS_STATUS:
+                try: update_task(selected_batch_id, status="Failed")
+                except: pass
             if editable:
                 try:
                     await editable.edit(f"Error: {error_msg}")

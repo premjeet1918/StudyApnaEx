@@ -21,6 +21,13 @@ from config import PREMIUM_LOGS, join
 from datetime import datetime
 import pytz
 
+# Dashboard status tracker
+try:
+    from bot_status import add_task, update_task
+    _HAS_STATUS = True
+except ImportError:
+    _HAS_STATUS = False
+
 
 
 
@@ -398,6 +405,12 @@ async def appex_v5_txt(app, message, api, name):
     for raw_text2 in batch_ids:
         m2 = await message.reply_text(f"Extracting batch `{raw_text2}`...")
         start_time = time.time()
+
+        # Register this task on the web dashboard
+        _course_info_pre = next((ct for ct in mc1["data"] if ct.get("id") == raw_text2), {})
+        _dash_name = _course_info_pre.get("course_name", f"Batch {raw_text2}")
+        if _HAS_STATUS:
+            add_task(batch_id=raw_text2, name=_dash_name, total=0, user_id=message.from_user.id if message.from_user else 0, app_name=app_name)
         
         # Get course details including thumbnail
         course_info = next((ct for ct in mc1["data"] if ct.get("id") == raw_text2), {})
@@ -435,8 +448,14 @@ async def appex_v5_txt(app, message, api, name):
                     with open(filename1, 'w') as f:
                         try:
                             r1 = await fetch(session, f"{api_base}/get/allsubjectfrmlivecourseclass?courseid={raw_text2}&start=-1", hdr1)
-                
-                            for subject in r1.get("data", []):
+
+                            _subjects = r1.get("data", [])
+                            _total_subjects = len(_subjects)
+                            _done_subjects = 0
+                            if _HAS_STATUS:
+                                update_task(raw_text2, total=_total_subjects)
+
+                            for subject in _subjects:
                                 si = subject.get("subjectid")
                                 sn = subject.get("subject_name")
 
@@ -449,6 +468,10 @@ async def appex_v5_txt(app, message, api, name):
                                 for data in all_data:
                                     if data:
                                         f.writelines(data)
+
+                                _done_subjects += 1
+                                if _HAS_STATUS:
+                                    update_task(raw_text2, done=_done_subjects)
             
                         except Exception as e:
                             print(f"An error occurred while processing batch {raw_text2}: {str(e)}")
@@ -460,6 +483,8 @@ async def appex_v5_txt(app, message, api, name):
                     end_time = time.time()
                     elapsed_time = end_time - start_time
                     print(f"Elapsed time: {elapsed_time:.1f} seconds")
+                    if _HAS_STATUS:
+                        update_task(raw_text2, status="Completed", elapsed=round(elapsed_time, 1))
                     
                     # Using v3's caption format
                     caption = (
@@ -492,6 +517,8 @@ async def appex_v5_txt(app, message, api, name):
                             
         except Exception as e:
             print(f"Error processing batch {raw_text2}: {str(e)}")
+            if _HAS_STATUS:
+                update_task(raw_text2, status="Failed")
             await message.reply_text(f"⚠️ Failed to process batch {raw_text2}")
             sanitized_course_name = course_name.replace(':', '_').replace('/', '_')
             await v2_new(app, message, token, userid, hdr1, app_name, raw_text2, api_base, sanitized_course_name, start_time, start_date, end_date, price, input2, m1, m2)

@@ -44,11 +44,10 @@ if __name__ == "__main__":
         import multiprocessing
         procs = [
             multiprocessing.Process(target=run_app, name="web_app"),
-            multiprocessing.Process(target=run_bot, name="telegram_bot"),
+            # Bot process will now be started by the user from the dashboard
         ]
         for p in procs:
             p.start()
 
-        # Wait for them (if one dies, we'll exit too)
         for p in procs:
             p.join()

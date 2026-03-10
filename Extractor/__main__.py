@@ -20,6 +20,19 @@ async def sumit_boot():
     for all_module in ALL_MODULES:
         importlib.import_module("Extractor.modules." + all_module)
 
+    # Mark bot as running for the web dashboard
+    try:
+        import sys, os
+        # Ensure project root is in path
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if project_root not in sys.path:
+            sys.path.insert(0, project_root)
+        from bot_status import mark_bot_running
+        mark_bot_running()
+        print("» Dashboard status: Bot marked as ACTIVE ✅")
+    except Exception as e:
+        print(f"» Dashboard status update failed: {e}")
+
     print("» ʙᴏᴛ ᴅᴇᴘʟᴏʏ sᴜᴄᴄᴇssғᴜʟʟʏ ✨ 🎉")
     await idle()  # keeps the bot alive
 
