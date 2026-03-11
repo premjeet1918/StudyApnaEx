@@ -1,0 +1,65 @@
+TgCrypto is missing! Pyrogram will work the same, but at a much slower speed. More info: https://docs.pyrogram.org/topics/speedups
+[ INFO/2026-03-11 02:06:43,556] pyrogram.session.auth: Start creating a new auth key on DC2
+[ INFO/2026-03-11 02:06:43,556] pyrogram.connection.connection: Connecting...
+[ INFO/2026-03-11 02:06:43,753] pyrogram.connection.connection: Connected! Production DC2 - IPv4
+[ INFO/2026-03-11 02:06:46,510] pyrogram.session.auth: Done auth key exchange: DhGenOk
+[ INFO/2026-03-11 02:06:46,511] pyrogram.connection.connection: Disconnected
+[ INFO/2026-03-11 02:06:46,733] pyrogram.connection.connection: Connecting...
+[ INFO/2026-03-11 02:06:46,940] pyrogram.connection.connection: Connected! Production DC2 - IPv4
+[ INFO/2026-03-11 02:06:46,943] pyrogram.session.session: NetworkTask started
+[ INFO/2026-03-11 02:06:48,861] pyrogram.session.session: Session initialized: Layer 158
+[ INFO/2026-03-11 02:06:48,861] pyrogram.session.session: Device: CPython 3.13.2 - Pyrogram 2.0.106
+[ INFO/2026-03-11 02:06:48,861] pyrogram.session.session: System: Windows 11 (en)
+[ INFO/2026-03-11 02:06:48,861] pyrogram.session.session: Session started
+[ INFO/2026-03-11 02:06:48,903] pyrogram.session.session: PingTask started
+[ INFO/2026-03-11 02:06:49,161] pyrogram.session.session: PingTask stopped
+[ INFO/2026-03-11 02:06:49,161] pyrogram.session.session: NetworkTask stopped
+[ INFO/2026-03-11 02:06:49,161] pyrogram.connection.connection: Disconnected
+[ INFO/2026-03-11 02:06:49,161] pyrogram.session.session: Session stopped
+[ INFO/2026-03-11 02:06:49,330] pyrogram.session.auth: Start creating a new auth key on DC5
+[ INFO/2026-03-11 02:06:49,331] pyrogram.connection.connection: Connecting...
+[ INFO/2026-03-11 02:06:49,434] pyrogram.connection.connection: Connected! Production DC5 - IPv4
+[ INFO/2026-03-11 02:06:51,047] pyrogram.session.auth: Done auth key exchange: DhGenOk
+[ INFO/2026-03-11 02:06:51,048] pyrogram.connection.connection: Disconnected
+[ INFO/2026-03-11 02:06:51,258] pyrogram.connection.connection: Connecting...
+[ INFO/2026-03-11 02:06:51,383] pyrogram.connection.connection: Connected! Production DC5 - IPv4
+[ INFO/2026-03-11 02:06:51,384] pyrogram.session.session: NetworkTask started
+[ INFO/2026-03-11 02:06:51,970] pyrogram.session.session: Session initialized: Layer 158
+[ INFO/2026-03-11 02:06:51,970] pyrogram.session.session: Device: CPython 3.13.2 - Pyrogram 2.0.106
+[ INFO/2026-03-11 02:06:51,970] pyrogram.session.session: System: Windows 11 (en)
+[ INFO/2026-03-11 02:06:51,970] pyrogram.session.session: Session started
+[ INFO/2026-03-11 02:06:51,970] pyrogram.session.session: PingTask started
+[ INFO/2026-03-11 02:06:52,596] pyrogram.dispatcher: Started 200 HandlerTasks
+C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\__init__.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import get_distribution, DistributionNotFound
+Pyromod is working! If you like pyromod, please star it at https://github.com/usernein/pyromod
+» Dashboard status update failed: 'charmap' codec can't encode character '\u2705' in position 41: character maps to <undefined>
+Loop closed.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Asus\OneDrive\Desktop\p\StudyApnaEx\Extractor\__main__.py", line 43, in <module>
+    loop.run_until_complete(sumit_boot())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\OneDrive\Desktop\p\StudyApnaEx\Extractor\__main__.py", line 36, in sumit_boot
+    print("» \u0299\u1d0f\u1d1b \u1d05\u1d07\u1d18\u029f\u1d0f\u028f s\u1d1c\u1d04\u1d04\u1d07ss\u0493\u1d1c\u029f\u029f\u028f \u2728 \U0001f389")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\colorama\ansitowin32.py", line 47, in write
+    self.__convertor.write(text)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\colorama\ansitowin32.py", line 177, in write
+    self.write_and_convert(text)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\colorama\ansitowin32.py", line 205, in write_and_convert
+    self.write_plain_text(text, cursor, len(text))
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\colorama\ansitowin32.py", line 210, in write_plain_text
+    self.wrapped.write(text[start:end])
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 2-4: character maps to <undefined>

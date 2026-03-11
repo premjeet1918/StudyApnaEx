@@ -1,0 +1,39 @@
+TgCrypto is missing! Pyrogram will work the same, but at a much slower speed. More info: https://docs.pyrogram.org/topics/speedups
+[ INFO/2026-03-11 01:56:28,045] pyrogram.connection.connection: Connecting...
+[ INFO/2026-03-11 01:56:28,189] pyrogram.connection.connection: Connected! Production DC5 - IPv4
+[ INFO/2026-03-11 01:56:28,191] pyrogram.session.session: NetworkTask started
+[ INFO/2026-03-11 01:56:28,811] pyrogram.session.session: NetworkTask stopped
+[ INFO/2026-03-11 01:56:28,811] pyrogram.connection.connection: Disconnected
+[ INFO/2026-03-11 01:56:28,811] pyrogram.session.session: Session stopped
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 148, in _get_module_details
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "C:\Users\Asus\OneDrive\Desktop\p\StudyApnaEx\Extractor\__init__.py", line 44, in <module>
+    loop.run_until_complete(info_bot())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\OneDrive\Desktop\p\StudyApnaEx\Extractor\__init__.py", line 35, in info_bot
+    await app.start()
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\methods\utilities\start.py", line 58, in start
+    is_authorized = await self.connect()
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\methods\auth\connect.py", line 47, in connect
+    await self.session.start()
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\session\session.py", line 144, in start
+    raise e
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\session\session.py", line 120, in start
+    await self.send(
+    ...<14 lines>...
+    )
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\session\session.py", line 357, in send
+    RPCError.raise_it(result, type(data))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\errors\rpc_error.py", line 91, in raise_it
+    raise getattr(
+    ...<5 lines>...
+      is_signed=is_signed)
+pyrogram.errors.exceptions.not_acceptable_406.AuthKeyDuplicated: Telegram says: [406 AUTH_KEY_DUPLICATED] - The same authorization key (session file) was used in more than one place simultaneously. You must delete your session file and log in again with your phone number or bot token (caused by "InvokeWithLayer")
+Pyromod is working! If you like pyromod, please star it at https://github.com/usernein/pyromod
